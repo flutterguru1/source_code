@@ -1,1 +1,1 @@
-Juice App
+<img src="JuiceAppCoverFlutter.png"/>
