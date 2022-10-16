@@ -56,28 +56,27 @@ class _MyHomePageState extends State<MyHomePage> {
       adUnitId: rewardedAdUnitId,
       request:const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
+        //when failed to load
+        onAdFailedToLoad: (LoadAdError error){
+          print("Failed to load rewarded ad, Error: $error");
+        },
         //when loaded
         onAdLoaded: (RewardedAd ad){
           print("$ad loaded");
           // Keep a reference to the ad so you can show it later.
           rewardedAd = ad;
-          
-          //set on full screen content call back
-          _setFullScreenContentCallback(ad);
-        },
 
-        //when failed to load
-        onAdFailedToLoad: (LoadAdError error){
-          print("Failed to load rewarded ad, Error: $error");
+          //set on full screen content call back
+          _setFullScreenContentCallback();
         },
       ),
     );
   }
 
   //method to set show content call back
-  void _setFullScreenContentCallback(RewardedAd ad){
-
-    ad.fullScreenContentCallback = FullScreenContentCallback(
+  void _setFullScreenContentCallback(){
+       if(rewardedAd == null) return;
+    rewardedAd.fullScreenContentCallback = FullScreenContentCallback(
       //when ad  shows fullscreen
       onAdShowedFullScreenContent: (RewardedAd ad) => print("$ad onAdShowedFullScreenContent"),
       //when ad dismissed by user
