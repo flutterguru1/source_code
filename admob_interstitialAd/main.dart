@@ -88,6 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
       onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error){
         print("$ad  onAdFailedToShowFullScreenContent: $error ");
+         //dispose the failed ad
+        ad.dispose();
       },
 
       onAdImpression: (InterstitialAd ad) =>print("$ad Impression occured"),
