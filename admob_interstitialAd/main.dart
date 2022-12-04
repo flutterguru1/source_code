@@ -59,9 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
         onAdLoaded: (InterstitialAd ad){
           //keep a reference to the ad as you can show it later
           interstitialAd = ad;
-
+          
           //set on full screen content call back
-          _setFullScreenContentCallback(ad);
+          _setFullScreenContentCallback();
         },
         onAdFailedToLoad: (LoadAdError loadAdError){
           //ad failed to load
@@ -73,9 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   //method to set show content call back
-  void _setFullScreenContentCallback(InterstitialAd ad){
+  void _setFullScreenContentCallback(){
 
-    ad.fullScreenContentCallback = FullScreenContentCallback(
+    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
 
       onAdShowedFullScreenContent: (InterstitialAd ad) => print("$ad onAdShowedFullScreenContent"),
 
@@ -99,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //show ad method
   void _showInterstitialAd(){
+    if(interstitialAd == null){print("Ad not ready!"); return;}
     interstitialAd.show();
   }
 
