@@ -1,1 +1,1 @@
-Asset contains the spin wheel and the belt
+Asset contains the background,  spin wheel and the belt images
